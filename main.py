@@ -10,6 +10,18 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route('/generate_card', methods=['POST'])
 def generate_card():
+    @app.route('/analyze_text', methods=['POST'])
+def analyze_text():
+    input_text = request.json.get("input_text", "")
+    
+    if not input_text:
+        return {"error": "No input_text provided"}, 400
+
+    # استجابة وهمية كمثال (تقدر تربط GPT لاحقًا)
+    result = {
+        "analysis": f"تم تحليل الشاهد: {input_text[:50]}... ✅"
+    }
+    return result
     program_name = request.form.get('program_name', '---')
     instructor = request.form.get('instructor', '---')
     category = request.form.get('category', '---')
